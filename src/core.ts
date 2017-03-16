@@ -47,15 +47,7 @@ export class PhysicsSystem {
   public update() {
     if (this.options.gravityType % 2 == 1)
       this.particles.forEach((p: Particle) =>
-<<<<<<< HEAD
-<<<<<<< HEAD
         p.applyForce(math.Vector.mult(this.options.gravityDirection, p.mass)));
-=======
-        p.applyForce(math.Vector.mult(this.options.gravityDirection, p.mass));
->>>>>>> e36546539f3d37f83b3c1aa9fdb6a54625545e2f
-=======
-        p.applyForce(math.Vector.mult(this.options.gravityDirection, p.mass));
->>>>>>> e36546539f3d37f83b3c1aa9fdb6a54625545e2f
     this.particles.forEach((p: Particle) => p.update());
   }
 }
