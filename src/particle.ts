@@ -17,9 +17,19 @@ export class Particle {
   }
 
   /**
-   * applyForce
+   * Apply a force to the current Particle
+   * @param f Force to apply as a Vector
    */
   public applyForce(f: Vector) : void {
-    this.acceleration.add(Vector.scale(f, 1 / this.mass));
+    this.acceleration.add(Vector.div(f, this.mass));
+  }
+
+  /**
+   * Updates the Particle
+   */
+  public update() {
+    this.velocity.add(this.acceleration);
+    this.position.add(this.velocity);
+    this.acceleration.mult(0);
   }
 }

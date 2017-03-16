@@ -11,10 +11,19 @@ var Particle = (function () {
         this.acceleration = new math_1.Vector();
     }
     /**
-     * applyForce
+     * Apply a force to the current Particle
+     * @param f Force to apply as a Vector
      */
     Particle.prototype.applyForce = function (f) {
-        this.acceleration.add(math_1.Vector.scale(f, 1 / this.mass));
+        this.acceleration.add(math_1.Vector.div(f, this.mass));
+    };
+    /**
+     * Updates the Particle
+     */
+    Particle.prototype.update = function () {
+        this.velocity.add(this.acceleration);
+        this.position.add(this.velocity);
+        this.acceleration.mult(0);
     };
     return Particle;
 }());
