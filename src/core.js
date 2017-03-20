@@ -1,9 +1,6 @@
-"use strict";
-var particle_1 = require("./particle");
-exports.Particle = particle_1.Particle;
-var math = require("./math");
-exports.math = math;
+import { Vector } from "./math";
 /**The different kinds of gravity a PhysicsSystem can have */
+var GravityType;
 (function (GravityType) {
     /**No gravity */
     GravityType[GravityType["None"] = 0] = "None";
@@ -13,32 +10,26 @@ exports.math = math;
     GravityType[GravityType["ObjectAttraction"] = 2] = "ObjectAttraction";
     /**Both types of gravity */
     GravityType[GravityType["Both"] = 3] = "Both";
-})(exports.GravityType || (exports.GravityType = {}));
-var GravityType = exports.GravityType;
+})(GravityType || (GravityType = {}));
 /**A system of Particles and other physics objects */
-var PhysicsSystem = (function () {
-    function PhysicsSystem(options) {
+class PhysicsSystem {
+    constructor(options) {
         this.options = options || { gravityType: GravityType.None };
-        this.options.gravityDirection = options.gravityDirection || new math.Vector();
+        this.options.gravityDirection = options.gravityDirection || new Vector();
     }
     /**
      * Adds a Particle to the PhysicsSystem
      * @param p Particle to add
      */
-    PhysicsSystem.prototype.addParticle = function (p) {
+    addParticle(p) {
         this.particles.push(p);
-    };
+    }
     /**
      * Updates all of the Particles in the PhysicsSystem
      */
-    PhysicsSystem.prototype.update = function () {
-        var _this = this;
+    update() {
         if (this.options.gravityType % 2 == 1)
-            this.particles.forEach(function (p) {
-                return p.applyForce(math.Vector.mult(_this.options.gravityDirection, p.mass));
-            });
-        this.particles.forEach(function (p) { return p.update(); });
-    };
-    return PhysicsSystem;
-}());
-exports.PhysicsSystem = PhysicsSystem;
+            this.particles.forEach((p) => p.applyForce(Vector.mult(this.options.gravityDirection, p.mass)));
+        this.particles.forEach((p) => p.update());
+    }
+}

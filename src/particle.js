@@ -1,30 +1,27 @@
-"use strict";
-var math_1 = require("./math");
+import { Vector } from "./math";
 /**
  * Particle
  */
-var Particle = (function () {
-    function Particle(pos, vel, mass) {
+export class Particle {
+    constructor(pos, vel, mass) {
         this.position = pos;
-        this.velocity = vel || new math_1.Vector();
+        this.velocity = vel || new Vector();
         this.mass = mass || 1;
-        this.acceleration = new math_1.Vector();
+        this.acceleration = new Vector();
     }
     /**
      * Apply a force to the current Particle
      * @param f Force to apply as a Vector
      */
-    Particle.prototype.applyForce = function (f) {
-        this.acceleration.add(math_1.Vector.div(f, this.mass));
-    };
+    applyForce(f) {
+        this.acceleration.add(Vector.div(f, this.mass));
+    }
     /**
      * Updates the Particle
      */
-    Particle.prototype.update = function () {
+    update() {
         this.velocity.add(this.acceleration);
         this.position.add(this.velocity);
         this.acceleration.mult(0);
-    };
-    return Particle;
-}());
-exports.Particle = Particle;
+    }
+}

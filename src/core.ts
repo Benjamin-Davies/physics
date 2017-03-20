@@ -1,10 +1,8 @@
 import { Particle } from "./particle";
-import * as math from "./math";
-
-export { Particle, math };
+import { Vector } from "./math";
 
 /**The different kinds of gravity a PhysicsSystem can have */
-export enum GravityType {
+enum GravityType {
   /**No gravity */
   None,
   /**The whole world is pulled in one direction (eg. down) */
@@ -16,13 +14,13 @@ export enum GravityType {
 }
 
 /**The options for a PhysicsSystem */
-export interface PhysicsSystemOptions {
+interface PhysicsSystemOptions {
   gravityType: GravityType;
-  gravityDirection?: math.Vector;
+  gravityDirection?: Vector;
 }
 
 /**A system of Particles and other physics objects */
-export class PhysicsSystem {
+class PhysicsSystem {
   /**Options for this PhysicsSystem */
   public particles: Particle[];
   /**Particles in this PhysicsSystem */
@@ -30,7 +28,7 @@ export class PhysicsSystem {
 
   constructor(options?: PhysicsSystemOptions) {
     this.options = options || { gravityType: GravityType.None };
-    this.options.gravityDirection = options.gravityDirection || new math.Vector();
+    this.options.gravityDirection = options.gravityDirection || new Vector();
   }
 
   /**
@@ -47,7 +45,7 @@ export class PhysicsSystem {
   public update() {
     if (this.options.gravityType % 2 == 1)
       this.particles.forEach((p: Particle) =>
-        p.applyForce(math.Vector.mult(this.options.gravityDirection, p.mass)));
+        p.applyForce(Vector.mult(this.options.gravityDirection, p.mass)));
     this.particles.forEach((p: Particle) => p.update());
   }
 }
