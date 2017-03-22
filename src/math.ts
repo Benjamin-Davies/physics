@@ -1,7 +1,7 @@
 /**
  * A Two-Dimensional Vector.
  */
-export class Vector {
+class Vector {
   /**The X component of the Vector */
   public x: number;
   /**The Y component of the Vector */

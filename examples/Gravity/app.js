@@ -1,3 +1,6 @@
+/// <reference path="../../src/core.ts" />
+/// <reference path="../../src/math.ts" />
+/// <reference path="../../src/particle.ts" />
 // initialize a PhysicsSystem
 var physics = new PhysicsSystem({
     gravityType: GravityType.WholeWorld,

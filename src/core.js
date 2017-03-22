@@ -1,4 +1,5 @@
-import { Vector } from "./math";
+/// <reference path="./math.ts" />
+/// <reference path="./particle.ts" />
 /**The different kinds of gravity a PhysicsSystem can have */
 var GravityType;
 (function (GravityType) {
@@ -14,6 +15,7 @@ var GravityType;
 /**A system of Particles and other physics objects */
 class PhysicsSystem {
     constructor(options) {
+        this.particles = [];
         this.options = options || { gravityType: GravityType.None };
         this.options.gravityDirection = options.gravityDirection || new Vector();
     }

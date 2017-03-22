@@ -1,9 +1,9 @@
-import { Vector } from "./math";
+/// <reference path="math.ts" />
 
 /**
  * Particle
  */
-export class Particle {
+class Particle {
   public position: Vector;
   public velocity: Vector;
   public mass: number;

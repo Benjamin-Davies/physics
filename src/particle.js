@@ -1,8 +1,8 @@
-import { Vector } from "./math";
+/// <reference path="math.ts" />
 /**
  * Particle
  */
-export class Particle {
+class Particle {
     constructor(pos, vel, mass) {
         this.position = pos;
         this.velocity = vel || new Vector();
