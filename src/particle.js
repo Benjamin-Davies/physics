@@ -2,8 +2,8 @@
 /**
  * Particle
  */
-class Particle {
-    constructor(pos, vel, mass) {
+var Particle = (function () {
+    function Particle(pos, vel, mass) {
         this.position = pos;
         this.velocity = vel || new Vector();
         this.mass = mass || 1;
@@ -13,15 +13,16 @@ class Particle {
      * Apply a force to the current Particle
      * @param f Force to apply as a Vector
      */
-    applyForce(f) {
+    Particle.prototype.applyForce = function (f) {
         this.acceleration.add(Vector.div(f, this.mass));
-    }
+    };
     /**
      * Updates the Particle
      */
-    update() {
+    Particle.prototype.update = function () {
         this.velocity.add(this.acceleration);
         this.position.add(this.velocity);
         this.acceleration.mult(0);
-    }
-}
+    };
+    return Particle;
+}());

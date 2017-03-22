@@ -13,8 +13,8 @@ var GravityType;
     GravityType[GravityType["Both"] = 3] = "Both";
 })(GravityType || (GravityType = {}));
 /**A system of Particles and other physics objects */
-class PhysicsSystem {
-    constructor(options) {
+var PhysicsSystem = (function () {
+    function PhysicsSystem(options) {
         this.particles = [];
         this.options = options || { gravityType: GravityType.None };
         this.options.gravityDirection = options.gravityDirection || new Vector();
@@ -23,15 +23,26 @@ class PhysicsSystem {
      * Adds a Particle to the PhysicsSystem
      * @param p Particle to add
      */
-    addParticle(p) {
+    PhysicsSystem.prototype.addParticle = function (p) {
         this.particles.push(p);
-    }
+    };
     /**
      * Updates all of the Particles in the PhysicsSystem
      */
-    update() {
-        if (this.options.gravityType % 2 == 1)
-            this.particles.forEach((p) => p.applyForce(Vector.mult(this.options.gravityDirection, p.mass)));
-        this.particles.forEach((p) => p.update());
-    }
-}
+    PhysicsSystem.prototype.update = function () {
+        var _this = this;
+        if (this.options.floorHeight)
+            this.particles.forEach(function (p) {
+                if (p.position.y >= _this.options.floorHeight)
+                    p.velocity.y *= -1;
+                else
+                    p.applyForce(Vector.mult(_this.options.gravityDirection, p.mass));
+            });
+        else if (this.options.gravityType % 2 == 1)
+            this.particles.forEach(function (p) {
+                return p.applyForce(Vector.mult(_this.options.gravityDirection, p.mass));
+            });
+        this.particles.forEach(function (p) { return p.update(); });
+    };
+    return PhysicsSystem;
+}());

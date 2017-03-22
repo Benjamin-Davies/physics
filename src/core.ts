@@ -17,6 +17,7 @@ enum GravityType {
 interface PhysicsSystemOptions {
   gravityType: GravityType;
   gravityDirection?: Vector;
+  floorHeight?: number;
 }
 
 /**A system of Particles and other physics objects */
@@ -44,9 +45,16 @@ class PhysicsSystem {
    * Updates all of the Particles in the PhysicsSystem
    */
   public update() {
-    if (this.options.gravityType % 2 == 1)
-      this.particles.forEach((p: Particle) =>
+    if (this.options.floorHeight)
+      this.particles.forEach((p) => {
+        if (p.position.y >= this.options.floorHeight)
+          p.velocity.y *= -1;
+        else
+          p.applyForce(Vector.mult(this.options.gravityDirection, p.mass))
+      });
+    else if (this.options.gravityType % 2 == 1)
+      this.particles.forEach((p) =>
         p.applyForce(Vector.mult(this.options.gravityDirection, p.mass)));
-    this.particles.forEach((p: Particle) => p.update());
+    this.particles.forEach((p) => p.update());
   }
 }
