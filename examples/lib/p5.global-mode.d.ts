@@ -320,19 +320,19 @@ declare var TWO_PI: any;
  * Called directly before setup(), the preload() function is used to handle
  * asynchronous loading of external files.
  */
-declare function preload(): void;
+//declare function preload(): void;
 
 /**
  * The setup() function is called once when the program starts.
  */
-declare function setup(): void;
+// declare function setup(): void;
 
 /**
  * Called directly after setup(), the draw() function continuously executes
  * the lines of code contained inside its block until the program is stopped
  * or noLoop() is called.
  */
-declare function draw(): void;
+// declare function draw(): void;
 
 /**
  * Removes the entire p5 sketch.
@@ -762,23 +762,23 @@ declare var keyCode: any;
 /**
  * The keyPressed() function is called once every time a key is pressed.
  */
-declare function keyPressed(): void;
+// declare function keyPressed(): void;
 
 /**
  * The keyReleased() function is called once every time a key is released.
  */
-declare function keyReleased(): void;
+// declare function keyReleased(): void;
 
 /**
  * The keyTyped() function is called once every time a key is pressed, but
  * action keys such as Ctrl, Shift, and Alt are ignored.
  */
-declare function keyTyped(): void;
+// declare function keyTyped(): void;
 
 /**
  * The keyIsDown() function checks if the key is currently down, i.e.
  */
-declare function keyIsDown(code: number): boolean;
+// declare function keyIsDown(code: number): boolean;
 
 // src/events/mouse.js
 
@@ -852,25 +852,25 @@ declare var mouseIsPressed: any;
  * Browsers may have different default
  * behaviors attached to various mouse events.
  */
-declare function mouseMoved(): void;
+// declare function mouseMoved(): void;
 
 /**
  * The mouseDragged() function is called once every time the mouse moves and
  * a mouse button is pressed.
  */
-declare function mouseDragged(): void;
+// declare function mouseDragged(): void;
 
 /**
  * The mousePressed() function is called once after every time a mouse button
  * is pressed.
  */
-declare function mousePressed(): void;
+// declare function mousePressed(): void;
 
 /**
  * The mouseReleased() function is called every time a mouse button is
  * released.
  */
-declare function mouseReleased(): void;
+// declare function mouseReleased(): void;
 
 /**
  * The mouseClicked() function is called once after a mouse button has been
@@ -878,7 +878,7 @@ declare function mouseReleased(): void;
  * Browsers may have different default
  * behaviors attached to various mouse events.
  */
-declare function mouseClicked(): void;
+// declare function mouseClicked(): void;
 
 /**
  * The function mouseWheel() is executed every time a vertical mouse wheel
@@ -887,7 +887,7 @@ declare function mouseClicked(): void;
  * The event.delta property returns the amount the mouse wheel
  * have scrolled.
  */
-declare function mouseWheel(): void;
+// declare function mouseWheel(): void;
 
 // src/events/touch.js
 
@@ -929,17 +929,17 @@ declare var touchIsDown: any;
  * The touchStarted() function is called once after every time a touch is
  * registered.
  */
-declare function touchStarted(): void;
+// declare function touchStarted(): void;
 
 /**
  * The touchMoved() function is called every time a touch move is registered.
  */
-declare function touchMoved(): void;
+// declare function touchMoved(): void;
 
 /**
  * The touchEnded() function is called every time a touch ends.
  */
-declare function touchEnded(): void;
+// declare function touchEnded(): void;
 
 // src/image/image.js
 
