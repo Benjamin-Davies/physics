@@ -22,6 +22,15 @@ class Vector {
   }
 
   /**
+   * Subtracts a Vector from the current Vector
+   * @param {Vector} v - The Vector to subtract
+   */
+  public subtract(v: Vector): void {
+    this.x -= v.x;
+    this.y -= v.y;
+  }
+
+  /**
    * Multiplies the Vector by a number
    * @param sf Scaling factor
    */
@@ -55,12 +64,28 @@ class Vector {
   }
 
   /**
+   * Returns a Vector with the same magnitude but facing in the opposite direction
+   */
+  public negative() {
+    return new Vector(-this.x, -this.y);
+  }
+
+  /**
    * Adds two Vectors
    * @param v1 First Vector
    * @param v2 Second Vector
    */
   static add(v1: Vector, v2: Vector): Vector {
     return new Vector(v1.x + v2.x, v1.y + v2.y);
+  }
+
+  /**
+   * Subtracts one Vector from another
+   * @param v1 First Vector
+   * @param v2 Vector to subtract
+   */
+  static subtract(v1: Vector, v2: Vector): Vector {
+    return new Vector(v1.x - v2.x, v1.y - v2.y);
   }
 
   /**

@@ -15,6 +15,14 @@ var Vector = (function () {
         this.y += v.y;
     };
     /**
+     * Subtracts a Vector from the current Vector
+     * @param {Vector} v - The Vector to subtract
+     */
+    Vector.prototype.subtract = function (v) {
+        this.x -= v.x;
+        this.y -= v.y;
+    };
+    /**
      * Multiplies the Vector by a number
      * @param sf Scaling factor
      */
@@ -44,12 +52,26 @@ var Vector = (function () {
         return this.x * this.x + this.y * this.y;
     };
     /**
+     * Returns a Vector with the same magnitude but facing in the opposite direction
+     */
+    Vector.prototype.negative = function () {
+        return new Vector(-this.x, -this.y);
+    };
+    /**
      * Adds two Vectors
      * @param v1 First Vector
      * @param v2 Second Vector
      */
     Vector.add = function (v1, v2) {
         return new Vector(v1.x + v2.x, v1.y + v2.y);
+    };
+    /**
+     * Subtracts one Vector from another
+     * @param v1 First Vector
+     * @param v2 Vector to subtract
+     */
+    Vector.subtract = function (v1, v2) {
+        return new Vector(v1.x - v2.x, v1.y - v2.y);
     };
     /**
      * Multiplies a Vector by a number
@@ -69,3 +91,4 @@ var Vector = (function () {
     };
     return Vector;
 }());
+//# sourceMappingURL=math.js.map

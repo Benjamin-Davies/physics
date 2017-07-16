@@ -21,3 +21,4 @@ function draw() {
 function mousePressed() {
     physics.addParticle(new Particle(new Vector(mouseX, mouseY)));
 }
+//# sourceMappingURL=app.js.map

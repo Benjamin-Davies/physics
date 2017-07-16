@@ -1,28 +1,27 @@
-/// <reference path="math.ts" />
 /**
  * Particle
+ * A single zero volume object with mass
  */
 var Particle = (function () {
-    function Particle(pos, vel, mass) {
+    function Particle(pos, vel, mass, noPhysics) {
         this.position = pos;
         this.velocity = vel || new Vector();
         this.mass = mass || 1;
-        this.acceleration = new Vector();
+        this.noPhysics = noPhysics;
     }
     /**
      * Apply a force to the current Particle
      * @param f Force to apply as a Vector
      */
     Particle.prototype.applyForce = function (f) {
-        this.acceleration.add(Vector.div(f, this.mass));
+        this.velocity.add(Vector.div(f, this.mass));
     };
     /**
      * Updates the Particle
      */
     Particle.prototype.update = function () {
-        this.velocity.add(this.acceleration);
         this.position.add(this.velocity);
-        this.acceleration.mult(0);
     };
     return Particle;
 }());
+//# sourceMappingURL=particle.js.map
